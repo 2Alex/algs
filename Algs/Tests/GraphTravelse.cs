@@ -59,14 +59,14 @@ namespace Algs.Tests
         {
             var visited = new HashSet<int>();
             var planned = new HashSet<int>();            
-            var candidates = new Queue<int>();
+            var candidates = new Stack<int>();
 
-            candidates.Enqueue(0);
+            candidates.Push(0);
             planned.Add(0);
             var resultBuilder = new StringBuilder();
             while (candidates.Count > 0)
             {
-                var currentVisited = candidates.Dequeue();
+                var currentVisited = candidates.Pop();
                 planned.Remove(currentVisited);
                 visited.Add(currentVisited);
 
@@ -76,7 +76,7 @@ namespace Algs.Tests
                 {
                     if (!visited.Contains(vertex) && !planned.Contains(vertex))
                     {
-                        candidates.Enqueue(vertex);
+                        candidates.Push(vertex);
                         planned.Add(vertex);
                     }
                 }
